@@ -675,8 +675,9 @@ class MainApplication:
         if not self.ticks_DOS_var.get():
             self.ax2.set_xticklabels([])
 
-        toolbar = NavigationToolbar2Tk(self.canvas, self.parent)
-        toolbar.grid(row = 14, column = 3, columnspan = 4)
+        toolbar_frame = Frame(self.parent) 
+        toolbar_frame.grid(row=16,column=2,columnspan=4) 
+        toolbar = NavigationToolbar2Tk(self.canvas, toolbar_frame)
         toolbar.update()
 
 
@@ -1254,7 +1255,7 @@ class MainApplication:
         else:
             b = [0.5 * (blue[i] + blue[i + 1]) for i in range(nseg)]
 
-        a = np.ones(nseg, np.float) * alpha
+        a = np.ones(nseg, np.float64) * alpha
         lc = LineCollection(seg, colors=list(zip(r, g, b, a)), linewidth=2)
         ax.add_collection(lc)
 
@@ -1594,8 +1595,9 @@ class MainApplication:
             self.plot_widget = self.canvas.get_tk_widget()
             self.plot_widget.grid(row = 1, column = 3, columnspan = 11, rowspan = 13)
 
-            toolbar = NavigationToolbar2Tk(self.canvas, self.parent)
-            toolbar.grid(row = 14, column = 3, columnspan = 4)
+            toolbar_frame = Frame(self.parent) 
+            toolbar_frame.grid(row=16,column=2,columnspan=4) 
+            toolbar = NavigationToolbar2Tk(self.canvas, toolbar_frame)
             toolbar.update()
 
 
